@@ -64,8 +64,8 @@ func Flush() {
 	}
 }
 
-// Reset purges certain circuit and metric information from memory.
-func Reset(name string) {
+// Clear purges certain circuit and metric information from memory.
+func Clear(name string) {
 	circuitBreakersMutex.Lock()
 	defer circuitBreakersMutex.Unlock()
 

@@ -1,5 +1,8 @@
 hystrix-go
-==========
+=========
+
+Newly Add:
+1. add a Clear function to flush certain circuit at runtime
 
 [![Build Status](https://travis-ci.org/afex/hystrix-go.png?branch=master)](https://travis-ci.org/afex/hystrix-go)
 [![GoDoc Documentation](http://godoc.org/github.com/akisaya/hystrix-go/hystrix?status.png)](https://godoc.org/github.com/akisaya/hystrix-go/hystrix)
