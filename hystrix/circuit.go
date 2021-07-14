@@ -64,6 +64,18 @@ func Flush() {
 	}
 }
 
+// Reset purges certain circuit and metric information from memory.
+func Reset(name string) {
+	circuitBreakersMutex.Lock()
+	defer circuitBreakersMutex.Unlock()
+
+	if cb, ok := circuitBreakers[name]; ok {
+		cb.metrics.Reset()
+		cb.executorPool.Metrics.Reset()
+		delete(circuitBreakers, name)
+	}
+}
+
 // newCircuitBreaker creates a CircuitBreaker with associated Health
 func newCircuitBreaker(name string) *CircuitBreaker {
 	c := &CircuitBreaker{}
