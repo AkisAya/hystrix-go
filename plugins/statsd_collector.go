@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/akisaya/hystrix-go/hystrix/metric_collector"
-	"github.com/cactus/go-statsd-client/statsd"
+	"github.com/cactus/go-statsd-client/v5/statsd"
 )
 
 // StatsdCollector fulfills the metricCollector interface allowing users to ship circuit
@@ -74,10 +74,6 @@ func InitializeStatsdCollector(config *StatsdCollectorConfig) (*StatsdCollectorC
 	}
 
 	c, err := statsd.NewBufferedClient(config.StatsdAddr, config.Prefix, 1*time.Second, flushBytes)
-	if err != nil {
-		log.Printf("Could not initiale buffered client: %s. Falling back to a Noop Statsd client", err)
-		c, _ = statsd.NewNoopClient()
-	}
 	return &StatsdCollectorClient{
 		client:     c,
 		sampleRate: sampleRate,

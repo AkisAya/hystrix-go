@@ -14,7 +14,7 @@ import (
 	"github.com/akisaya/hystrix-go/hystrix"
 	"github.com/akisaya/hystrix-go/hystrix/metric_collector"
 	"github.com/akisaya/hystrix-go/plugins"
-	"github.com/cactus/go-statsd-client/statsd"
+	"github.com/cactus/go-statsd-client/v5/statsd"
 )
 
 const (
