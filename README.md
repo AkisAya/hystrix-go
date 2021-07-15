@@ -1,7 +1,7 @@
 hystrix-go
 =========
 
-Newly Add:
+## Newly Add:
 1. add a Clear function to flush certain circuit at runtime
 
 [![Build Status](https://travis-ci.org/afex/hystrix-go.png?branch=master)](https://travis-ci.org/afex/hystrix-go)
