@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/akisaya/hystrix-go/hystrix/metric_collector"
+	metricCollector "github.com/akisaya/hystrix-go/hystrix/metric_collector"
 	"github.com/akisaya/hystrix-go/hystrix/rolling"
 )
 
@@ -35,6 +35,12 @@ func newMetricExchange(name string) *metricExchange {
 	go m.Monitor()
 
 	return m
+}
+
+func (m *metricExchange) CloseChannel() {
+	m.Mutex.Lock()
+	defer m.Mutex.Unlock()
+	close(m.Updates)
 }
 
 // The Default Collector function will panic if collectors are not setup to specification.

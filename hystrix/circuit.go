@@ -59,7 +59,9 @@ func Flush() {
 
 	for name, cb := range circuitBreakers {
 		cb.metrics.Reset()
+		cb.metrics.CloseChannel()
 		cb.executorPool.Metrics.Reset()
+		cb.executorPool.Metrics.CloseChannel()
 		delete(circuitBreakers, name)
 	}
 }
@@ -71,7 +73,9 @@ func Clear(name string) {
 
 	if cb, ok := circuitBreakers[name]; ok {
 		cb.metrics.Reset()
+		cb.metrics.CloseChannel()
 		cb.executorPool.Metrics.Reset()
+		cb.executorPool.Metrics.CloseChannel()
 		delete(circuitBreakers, name)
 	}
 }
